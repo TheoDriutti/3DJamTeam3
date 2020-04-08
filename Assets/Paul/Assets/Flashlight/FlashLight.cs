@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class FlashLight : MonoBehaviour
 {
     [HideInInspector] public GameObject _icone01, _icone02, _icone03, _icone04;
+    public SphereCaster _sphereCaster;
     bool _isOn = true;
     int _actualMod = -1;
     [HideInInspector] public EnumDifferentesLight._differentsMods _differentsMods;
@@ -102,6 +103,8 @@ public class FlashLight : MonoBehaviour
             StartCoroutine(Clignotement());
         }
 
+        _sphereCaster._sphereRadius = (_pointLight.spotAngle / 5);
+        _sphereCaster._sphereRadius = (_pointLight.range);
 
         _icone01.GetComponent<ActualIcone>().ChangingIcone();
         _icone02.GetComponent<ActualIcone>().ChangingIcone();
