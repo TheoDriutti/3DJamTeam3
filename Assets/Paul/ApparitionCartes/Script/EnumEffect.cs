@@ -8,8 +8,8 @@ public class EnumEffect : ScriptableObject
     {
         AugmentationDureeDeVieTorche,
         AugmentationDistanceRayonDeLumiere,
-        FrequenceDureeBatterie,
-        FrequenceUtilisationPieges,
+        CapacityBatteryMax,
+        TempsRechargementPiege,
         RalentissementMob,
         DiminutionFolie,
         Projecteur,

@@ -30,14 +30,6 @@ public class CardManagerGlobal : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AttributeCard01();
-        }
-    }
-
     public void AttributeCard01()
     {
         if (_cardAlreadyUsed.Count > 0)
