@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnumEffect : ScriptableObject
+public class EnumColorChangement : ScriptableObject
 {
-    public enum _enumEffect
+    public enum _colorEnum
     {
 
     }

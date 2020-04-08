@@ -29,9 +29,17 @@ public class FlashLight : MonoBehaviour
     public int _timeOffClignotement;
 
 
+    [HideInInspector] public float _effectMultiplicateurDureeDeVieTorch= 1;
+    [HideInInspector] public float _effectMultiplicateurDistanceRayonLumiere = 1;
+    [HideInInspector] public float _effectCapacityMax = 1;
+    [HideInInspector] public bool _effectIsProjecteurCollected;
+    [HideInInspector] public float _effectMultiplicateurRechargeBatterie = 1;
+
+
 
     void Start()
     {
+        _lifeStart *= _effectCapacityMax;
         _life = _lifeStart;
         ChangingMode();
         StartCoroutine(LifeDown());
@@ -39,8 +47,8 @@ public class FlashLight : MonoBehaviour
 
     void Update()
     {
-        if (_life > 100)
-            _life = 100;
+        if (_life > Mathf.RoundToInt(100* _effectCapacityMax))
+            _life = Mathf.RoundToInt(100 * _effectCapacityMax);
         else if (_life < 0)
             _life = 0;
 
@@ -52,6 +60,7 @@ public class FlashLight : MonoBehaviour
         {
             ChangingMode();
         }
+        
     }
     void SwitchOnOff()
     {
@@ -85,17 +94,27 @@ public class FlashLight : MonoBehaviour
 
         _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
         _pointLight.spotAngle = _nombreDeModsDeLamp[_actualMod]._modRadius;
-        _pointLight.range = _nombreDeModsDeLamp[_actualMod]._modDistance;
+        _pointLight.range = _nombreDeModsDeLamp[_actualMod]._modDistance * _effectMultiplicateurDistanceRayonLumiere;
         _pointLight.color = _nombreDeModsDeLamp[_actualMod]._color;
         _damage = _nombreDeModsDeLamp[_actualMod]._modDamage;
+<<<<<<< HEAD:Assets/Paul/Assets/Flashlight/FlashLight.cs
         float _tailleCone = _pointLight.spotAngle / 4;
         _consommation = _nombreDeModsDeLamp[_actualMod]._consomationPerSeconds;
 
+=======
+        _consommation = _nombreDeModsDeLamp[_actualMod]._consomationPerSeconds;
+        
+>>>>>>> adab2310302fd5f9765c03f9d439925d2b7a3431:Assets/Paul/Flashlight/FlashLight.cs
         _differentsMods = _nombreDeModsDeLamp[_actualMod]._differentsMods;
 
         if (_differentsMods.ToString() == "_clignotante")
         {
             StartCoroutine(Clignotement());
+        }
+        else
+        {
+            StopCoroutine(Clignotement());
+            _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
         }
 
         _sphereCaster._sphereRadius = (_pointLight.spotAngle / 5);
@@ -112,7 +131,7 @@ public class FlashLight : MonoBehaviour
     {
         if (_isOn)
         {
-            yield return new WaitForSeconds(1 / _consommation);
+            yield return new WaitForSeconds(1 / _consommation  *_effectMultiplicateurDureeDeVieTorch);
             _life--;
             _pourcentageBatterie.text = _life + " %";
             if (_life > 0)
@@ -131,7 +150,7 @@ public class FlashLight : MonoBehaviour
     {
         if (!_isOn)
         {
-            yield return new WaitForSeconds(1 / _reloadPerSecond);
+            yield return new WaitForSeconds(1 / _reloadPerSecond / _effectMultiplicateurRechargeBatterie);
             _life++;
             _pourcentageBatterie.text = _life + " %";
             if (_life < 100)
@@ -140,10 +159,17 @@ public class FlashLight : MonoBehaviour
     }
     IEnumerator Clignotement()
     {
+
         yield return new WaitForSeconds(_timeOnClignotement);
-        _pointLight.intensity = 0;
+        if(_differentsMods.ToString() == "_clignotante" && _isOn)
+            _pointLight.intensity = 0;
         yield return new WaitForSeconds(_timeOffClignotement);
         _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
-        StartCoroutine(Clignotement());
+        if (_differentsMods.ToString() == "_clignotante" && _isOn)
+        {
+            Debug.Log(_differentsMods.ToString());
+            StartCoroutine(Clignotement());
+        }
+        
     }
 }
