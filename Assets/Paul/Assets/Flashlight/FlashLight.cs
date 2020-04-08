@@ -17,7 +17,6 @@ public class FlashLight : MonoBehaviour
     [HideInInspector] public int _damage;
     [Range(0, 100)]
     public float _lifeStart = 100;
-    [HideInInspector] public GameObject _cone;
     float _life, _consommation;
     [HideInInspector] public Light _pointLight;
     [HideInInspector] public Text _pourcentageBatterie;
@@ -90,12 +89,8 @@ public class FlashLight : MonoBehaviour
         _pointLight.color = _nombreDeModsDeLamp[_actualMod]._color;
         _damage = _nombreDeModsDeLamp[_actualMod]._modDamage;
         float _tailleCone = _pointLight.spotAngle / 4;
-        _cone.transform.localScale = new Vector3(_tailleCone, -_nombreDeModsDeLamp[_actualMod]._modDistance / 2, _tailleCone);
-        _cone.transform.position = new Vector3(_tailleCone, _cone.transform.position.y, _cone.transform.position.z);
         _consommation = _nombreDeModsDeLamp[_actualMod]._consomationPerSeconds;
 
-        _cone.SetActive(false);
-        _cone.SetActive(true);
         _differentsMods = _nombreDeModsDeLamp[_actualMod]._differentsMods;
 
         if (_differentsMods.ToString() == "_clignotante")
