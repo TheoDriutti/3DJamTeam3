@@ -43,7 +43,6 @@ public class CardManagerGlobal : MonoBehaviour
         if (_cardAlreadyUsed.Count > 0)
         {
             _tirage01 = Random.Range(0, _cardAlreadyUsed.Count);
-            Debug.Log(_tirage01);
 
             _card01._scriptableEffect = _scriptableEffects[_tirage01];
             _card01.AttribuerEffect();
@@ -74,7 +73,6 @@ public class CardManagerGlobal : MonoBehaviour
             }
             else
             {
-                Debug.Log(_tirage02);
                 yield return new WaitForSeconds(_timeToWaitBeforeNewCardAppears);
                 _card02._scriptableEffect = _scriptableEffects[_tirage02];
                 _card02.AttribuerEffect();
@@ -109,7 +107,6 @@ public class CardManagerGlobal : MonoBehaviour
             }
             else
             {
-                Debug.Log(_tirage03);
                 yield return new WaitForSeconds(_timeToWaitBeforeNewCardAppears);
                 _card03._scriptableEffect = _scriptableEffects[_tirage03];
                 _card03.AttribuerEffect();

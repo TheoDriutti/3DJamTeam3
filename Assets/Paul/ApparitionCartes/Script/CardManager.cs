@@ -18,6 +18,8 @@ public class CardManager : MonoBehaviour
 
     string _numberCard;
 
+    EnumEffect._enumEffect _enumEffect;
+
     void Start()
     {
         _numberCard = (Regex.Replace(this.name, "[^0-9]", ""));
@@ -59,8 +61,6 @@ public class CardManager : MonoBehaviour
         if (FindObjectOfType<CardManagerGlobal>()._cardSelected == "")
         {
             FindObjectOfType<CardManagerGlobal>()._cardSelected = _numberCard;
-            Debug.Log(_numberCard);
-            Debug.Log(FindObjectOfType<CardManagerGlobal>()._cardSelected);
 
             if (FindObjectOfType<CardManagerGlobal>()._cardSelected == _numberCard)
             {
@@ -73,9 +73,57 @@ public class CardManager : MonoBehaviour
 
     IEnumerator ThisCardSelected()
     {
-        Debug.Log(_scriptableEffect._effectTitle);
+        _enumEffect = _scriptableEffect._EnumEffect;
+        AffectedEffect();
         yield return new WaitForSeconds(FindObjectOfType<CardManagerGlobal>()._timeCardSelected);
         _goDown = true;
+    }
 
+    void AffectedEffect()
+    {
+        if(_enumEffect.ToString() == "AugmentationDureeDeVieTorche")
+        {
+            
+        }
+        else if (_enumEffect.ToString() == "AugmentationDistanceRayonDeLumiere")
+        {
+
+        }
+        else if (_enumEffect.ToString() == "FrequenceDureeBatterie")
+        {
+
+        }
+        else if (_enumEffect.ToString() == "FrequenceUtilisationPieges")
+        {
+
+        }
+        else if (_enumEffect.ToString() == "RalentissementMob")
+        { 
+
+        }
+        else if (_enumEffect.ToString() == "DiminutionFolie")
+        {
+
+        }
+        else if (_enumEffect.ToString() == "Projecteur")
+        {
+
+        }
+        else if (_enumEffect.ToString() == "AugmentationDureePieges")
+        {
+
+        }
+        else if (_enumEffect.ToString() == "AugmentationZonePieges")
+        {
+
+        }
+        else if (_enumEffect.ToString() == "RechargePlusRapide")
+        {
+
+        }
+        else if (_enumEffect.ToString() == "ChangementCouleurDeLaLampe")
+        {
+
+        }
     }
 }
