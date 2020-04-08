@@ -8,4 +8,5 @@ public class Wave
     public int _numberPetitsMonstres;
     public int _numberGrosMonstres;
     public int _numberOmbresMonstres;
+    public float _secondsBeforeSpawn;
 }
