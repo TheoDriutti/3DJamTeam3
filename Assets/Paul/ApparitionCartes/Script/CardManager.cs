@@ -79,6 +79,7 @@ public class CardManager : MonoBehaviour
         _goDown = true;
         yield return new WaitForSeconds(FindObjectOfType<CardManagerGlobal>()._timeCardSelected);
         FindObjectOfType<CardManagerGlobal>()._cardSelected = "";
+        FindObjectOfType<Timer>().EteindreLaCard();
     }
 
     void AffectedEffect()
