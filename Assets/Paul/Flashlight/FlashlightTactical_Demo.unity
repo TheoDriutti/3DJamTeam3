@@ -2897,11 +2897,11 @@ MonoBehaviour:
   _pointLight: {fileID: 704882501108558142}
   _pourcentageBatterie: {fileID: 1559062893}
   _nombreDeModsDeLamp:
-  - _differentsMods: 0
+  - _differentsMods: 3
     _modRadius: 20
     _modDistance: 20
     _modIntensity: 1
-    _color: {r: 1, g: 1, b: 1, a: 1}
+    _color: {r: 1, g: 0, b: 0, a: 1}
     _consomationPerSeconds: 7
     _modDamage: 0
   - _differentsMods: 1

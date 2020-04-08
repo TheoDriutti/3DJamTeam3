@@ -32,7 +32,7 @@ public class CardManagerGlobal : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             AttributeCard01();
         }

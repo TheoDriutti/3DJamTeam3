@@ -60,6 +60,7 @@ public class FlashLight : MonoBehaviour
         {
             ChangingMode();
         }
+        
     }
     void SwitchOnOff()
     {
@@ -104,6 +105,11 @@ public class FlashLight : MonoBehaviour
         {
             StartCoroutine(Clignotement());
         }
+        else
+        {
+            StopCoroutine(Clignotement());
+            _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
+        }
 
         _sphereCaster._sphereRadius = (_pointLight.spotAngle / 5);
         _sphereCaster._sphereRadius = (_pointLight.range);
@@ -147,10 +153,17 @@ public class FlashLight : MonoBehaviour
     }
     IEnumerator Clignotement()
     {
+
         yield return new WaitForSeconds(_timeOnClignotement);
-        _pointLight.intensity = 0;
+        if(_differentsMods.ToString() == "_clignotante" && _isOn)
+            _pointLight.intensity = 0;
         yield return new WaitForSeconds(_timeOffClignotement);
         _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
-        StartCoroutine(Clignotement());
+        if (_differentsMods.ToString() == "_clignotante" && _isOn)
+        {
+            Debug.Log(_differentsMods.ToString());
+            StartCoroutine(Clignotement());
+        }
+        
     }
 }
