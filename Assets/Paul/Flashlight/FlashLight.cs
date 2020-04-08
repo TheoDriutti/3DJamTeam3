@@ -29,7 +29,7 @@ public class FlashLight : MonoBehaviour
     public int _timeOffClignotement;
 
 
-    [HideInInspector] public float _effectMultiplicateurDureeDeVieTorch= 1;
+    [HideInInspector] public float _effectMultiplicateurDureeDeVieTorch = 1;
     [HideInInspector] public float _effectMultiplicateurDistanceRayonLumiere = 1;
     [HideInInspector] public float _effectCapacityMax = 1;
     [HideInInspector] public bool _effectIsProjecteurCollected;
@@ -63,7 +63,7 @@ public class FlashLight : MonoBehaviour
                 ChangingMode();
             }
         }
-        
+
     }
     void SwitchOnOff()
     {
@@ -100,8 +100,9 @@ public class FlashLight : MonoBehaviour
         _pointLight.range = _nombreDeModsDeLamp[_actualMod]._modDistance * _effectMultiplicateurDistanceRayonLumiere;
         _pointLight.color = _nombreDeModsDeLamp[_actualMod]._color;
         _damage = _nombreDeModsDeLamp[_actualMod]._modDamage;
+        float _tailleCone = _pointLight.spotAngle / 4;
         _consommation = _nombreDeModsDeLamp[_actualMod]._consomationPerSeconds;
-        
+
         _differentsMods = _nombreDeModsDeLamp[_actualMod]._differentsMods;
 
         if (_differentsMods.ToString() == "_clignotante")
@@ -136,7 +137,7 @@ public class FlashLight : MonoBehaviour
     {
         if (_isOn)
         {
-            yield return new WaitForSeconds(1 / _consommation  *_effectMultiplicateurDureeDeVieTorch);
+            yield return new WaitForSeconds(1 / _consommation * _effectMultiplicateurDureeDeVieTorch);
             _life--;
             _pourcentageBatterie.text = _life + " %";
             if (_life > 0 && !Timer._isCardVisible)
@@ -164,7 +165,7 @@ public class FlashLight : MonoBehaviour
     }
     IEnumerator Clignotement()
     {
-        if(_isOn && !Timer._isCardVisible)
+        if (_isOn && !Timer._isCardVisible)
         {
             yield return new WaitForSeconds(_timeOnClignotement);
             if (_differentsMods.ToString() == "_clignotante" && _isOn)
@@ -176,6 +177,6 @@ public class FlashLight : MonoBehaviour
                 StartCoroutine(Clignotement());
             }
         }
-        
+
     }
 }
