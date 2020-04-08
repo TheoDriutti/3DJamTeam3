@@ -106,5 +106,6 @@ public class Timer : MonoBehaviour
         _isCardVisible = false;
         FindObjectOfType<FlashLight>().IsLifeUpOrDown();
         _cardManager.SetActive(false);
+        FindObjectOfType<WavesManager>().NewWave();
     }
 }

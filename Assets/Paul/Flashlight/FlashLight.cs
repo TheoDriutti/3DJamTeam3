@@ -173,7 +173,6 @@ public class FlashLight : MonoBehaviour
             _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
             if (_differentsMods.ToString() == "_clignotante" && _isOn)
             {
-                Debug.Log(_differentsMods.ToString());
                 StartCoroutine(Clignotement());
             }
         }

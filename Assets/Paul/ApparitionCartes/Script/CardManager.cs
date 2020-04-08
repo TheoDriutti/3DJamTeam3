@@ -87,7 +87,6 @@ public class CardManager : MonoBehaviour
         if(_enumEffect.ToString() == "AugmentationDureeDeVieTorche")
         {
             FindObjectOfType<FlashLight>()._effectMultiplicateurDureeDeVieTorch *= FindObjectOfType<EffectManager>()._multiplicateurDureeVieTorche;
-            Debug.Log(FindObjectOfType<FlashLight>()._effectMultiplicateurDureeDeVieTorch);
         }
         else if (_enumEffect.ToString() == "AugmentationDistanceRayonDeLumiere")
         {
