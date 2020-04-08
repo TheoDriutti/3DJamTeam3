@@ -47,18 +47,21 @@ public class FlashLight : MonoBehaviour
 
     void Update()
     {
-        if (_life > Mathf.RoundToInt(100* _effectCapacityMax))
-            _life = Mathf.RoundToInt(100 * _effectCapacityMax);
-        else if (_life < 0)
-            _life = 0;
+        if (Timer._isCardVisible)
+        {
+            if (_life > Mathf.RoundToInt(100 * _effectCapacityMax))
+                _life = Mathf.RoundToInt(100 * _effectCapacityMax);
+            else if (_life < 0)
+                _life = 0;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            SwitchOnOff();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangingMode();
+            if (Input.GetMouseButtonDown(0))
+            {
+                SwitchOnOff();
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ChangingMode();
+            }
         }
         
     }
@@ -123,7 +126,7 @@ public class FlashLight : MonoBehaviour
 
     IEnumerator LifeDown()
     {
-        if (_isOn)
+        if (_isOn && !Timer._isCardVisible)
         {
             yield return new WaitForSeconds(1 / _consommation  *_effectMultiplicateurDureeDeVieTorch);
             _life--;
@@ -142,7 +145,7 @@ public class FlashLight : MonoBehaviour
     }
     IEnumerator LifeUp()
     {
-        if (!_isOn)
+        if (!_isOn && !Timer._isCardVisible)
         {
             yield return new WaitForSeconds(1 / _reloadPerSecond / _effectMultiplicateurRechargeBatterie);
             _life++;
@@ -153,16 +156,18 @@ public class FlashLight : MonoBehaviour
     }
     IEnumerator Clignotement()
     {
-
-        yield return new WaitForSeconds(_timeOnClignotement);
-        if(_differentsMods.ToString() == "_clignotante" && _isOn)
-            _pointLight.intensity = 0;
-        yield return new WaitForSeconds(_timeOffClignotement);
-        _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
-        if (_differentsMods.ToString() == "_clignotante" && _isOn)
+        if(_isOn && !Timer._isCardVisible)
         {
-            Debug.Log(_differentsMods.ToString());
-            StartCoroutine(Clignotement());
+            yield return new WaitForSeconds(_timeOnClignotement);
+            if (_differentsMods.ToString() == "_clignotante" && _isOn)
+                _pointLight.intensity = 0;
+            yield return new WaitForSeconds(_timeOffClignotement);
+            _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
+            if (_differentsMods.ToString() == "_clignotante" && _isOn)
+            {
+                Debug.Log(_differentsMods.ToString());
+                StartCoroutine(Clignotement());
+            }
         }
         
     }
