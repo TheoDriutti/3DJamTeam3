@@ -47,7 +47,7 @@ public class FlashLight : MonoBehaviour
 
     void Update()
     {
-        if (Timer._isCardVisible)
+        if (!Timer._isCardVisible)
         {
             if (_life > Mathf.RoundToInt(100 * _effectCapacityMax))
                 _life = Mathf.RoundToInt(100 * _effectCapacityMax);
@@ -124,14 +124,22 @@ public class FlashLight : MonoBehaviour
 
     }
 
+    public void IsLifeUpOrDown()
+    {
+        if (_isOn)
+            StartCoroutine(LifeDown());
+        else
+            StartCoroutine(LifeUp());
+    }
+
     IEnumerator LifeDown()
     {
-        if (_isOn && !Timer._isCardVisible)
+        if (_isOn)
         {
             yield return new WaitForSeconds(1 / _consommation  *_effectMultiplicateurDureeDeVieTorch);
             _life--;
             _pourcentageBatterie.text = _life + " %";
-            if (_life > 0)
+            if (_life > 0 && !Timer._isCardVisible)
                 StartCoroutine(LifeDown());
             else
                 SwitchOnOff();
@@ -145,12 +153,12 @@ public class FlashLight : MonoBehaviour
     }
     IEnumerator LifeUp()
     {
-        if (!_isOn && !Timer._isCardVisible)
+        if (!_isOn)
         {
             yield return new WaitForSeconds(1 / _reloadPerSecond / _effectMultiplicateurRechargeBatterie);
             _life++;
             _pourcentageBatterie.text = _life + " %";
-            if (_life < 100)
+            if (_life < 100 && !Timer._isCardVisible)
                 StartCoroutine(LifeUp());
         }
     }

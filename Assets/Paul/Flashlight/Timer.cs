@@ -104,6 +104,7 @@ public class Timer : MonoBehaviour
     public void EteindreLaCard()
     {
         _isCardVisible = false;
+        FindObjectOfType<FlashLight>().IsLifeUpOrDown();
         _cardManager.SetActive(false);
     }
 }
