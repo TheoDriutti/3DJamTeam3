@@ -29,9 +29,17 @@ public class FlashLight : MonoBehaviour
     public int _timeOffClignotement;
 
 
+    [HideInInspector] public float _effectMultiplicateurDureeDeVieTorch= 1;
+    [HideInInspector] public float _effectMultiplicateurDistanceRayonLumiere = 1;
+    [HideInInspector] public float _effectCapacityMax = 1;
+    [HideInInspector] public bool _effectIsProjecteurCollected;
+    [HideInInspector] public float _effectMultiplicateurRechargeBatterie = 1;
+
+
 
     void Start()
     {
+        _lifeStart *= _effectCapacityMax;
         _life = _lifeStart;
         ChangingMode();
         StartCoroutine(LifeDown());
@@ -39,8 +47,8 @@ public class FlashLight : MonoBehaviour
 
     void Update()
     {
-        if (_life > 100)
-            _life = 100;
+        if (_life > Mathf.RoundToInt(100* _effectCapacityMax))
+            _life = Mathf.RoundToInt(100 * _effectCapacityMax);
         else if (_life < 0)
             _life = 0;
 
@@ -85,10 +93,9 @@ public class FlashLight : MonoBehaviour
 
         _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
         _pointLight.spotAngle = _nombreDeModsDeLamp[_actualMod]._modRadius;
-        _pointLight.range = _nombreDeModsDeLamp[_actualMod]._modDistance;
+        _pointLight.range = _nombreDeModsDeLamp[_actualMod]._modDistance * _effectMultiplicateurDistanceRayonLumiere;
         _pointLight.color = _nombreDeModsDeLamp[_actualMod]._color;
         _damage = _nombreDeModsDeLamp[_actualMod]._modDamage;
-        float _tailleCone = _pointLight.spotAngle / 4;
         _consommation = _nombreDeModsDeLamp[_actualMod]._consomationPerSeconds;
         
         _differentsMods = _nombreDeModsDeLamp[_actualMod]._differentsMods;
@@ -112,7 +119,7 @@ public class FlashLight : MonoBehaviour
     {
         if (_isOn)
         {
-            yield return new WaitForSeconds(1 / _consommation);
+            yield return new WaitForSeconds(1 / _consommation  *_effectMultiplicateurDureeDeVieTorch);
             _life--;
             _pourcentageBatterie.text = _life + " %";
             if (_life > 0)
@@ -131,7 +138,7 @@ public class FlashLight : MonoBehaviour
     {
         if (!_isOn)
         {
-            yield return new WaitForSeconds(1 / _reloadPerSecond);
+            yield return new WaitForSeconds(1 / _reloadPerSecond / _effectMultiplicateurRechargeBatterie);
             _life++;
             _pourcentageBatterie.text = _life + " %";
             if (_life < 100)

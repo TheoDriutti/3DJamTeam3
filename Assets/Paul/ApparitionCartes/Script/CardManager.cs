@@ -77,23 +77,26 @@ public class CardManager : MonoBehaviour
         AffectedEffect();
         yield return new WaitForSeconds(FindObjectOfType<CardManagerGlobal>()._timeCardSelected);
         _goDown = true;
+        yield return new WaitForSeconds(FindObjectOfType<CardManagerGlobal>()._timeCardSelected);
+        FindObjectOfType<CardManagerGlobal>()._cardSelected = "";
     }
 
     void AffectedEffect()
     {
         if(_enumEffect.ToString() == "AugmentationDureeDeVieTorche")
         {
-            
+            FindObjectOfType<FlashLight>()._effectMultiplicateurDureeDeVieTorch *= FindObjectOfType<EffectManager>()._multiplicateurDureeVieTorche;
+            Debug.Log(FindObjectOfType<FlashLight>()._effectMultiplicateurDureeDeVieTorch);
         }
         else if (_enumEffect.ToString() == "AugmentationDistanceRayonDeLumiere")
         {
-
+            FindObjectOfType<FlashLight>()._effectMultiplicateurDistanceRayonLumiere *= FindObjectOfType<EffectManager>()._multiplicateurDistanceRayonLumiere;
         }
-        else if (_enumEffect.ToString() == "FrequenceDureeBatterie")
+        else if (_enumEffect.ToString() == "CapacityBatteryMax")
         {
-
+            FindObjectOfType<FlashLight>()._effectCapacityMax *= FindObjectOfType<EffectManager>()._capacityMax;
         }
-        else if (_enumEffect.ToString() == "FrequenceUtilisationPieges")
+        else if (_enumEffect.ToString() == "TempsRechargementPiege")
         {
 
         }
@@ -107,7 +110,7 @@ public class CardManager : MonoBehaviour
         }
         else if (_enumEffect.ToString() == "Projecteur")
         {
-
+            FindObjectOfType<FlashLight>()._effectIsProjecteurCollected =true;
         }
         else if (_enumEffect.ToString() == "AugmentationDureePieges")
         {
@@ -120,6 +123,7 @@ public class CardManager : MonoBehaviour
         else if (_enumEffect.ToString() == "RechargePlusRapide")
         {
 
+            FindObjectOfType<FlashLight>()._effectMultiplicateurRechargeBatterie *= FindObjectOfType<EffectManager>()._multiplicateurRechargeBatterie;
         }
         else if (_enumEffect.ToString() == "ChangementCouleurDeLaLampe")
         {
