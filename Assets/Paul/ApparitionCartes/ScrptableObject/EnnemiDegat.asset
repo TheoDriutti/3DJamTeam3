@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
-  m_Name: BatteriePlusLongue
+  m_Name: EnnemiDegat
   m_EditorClassIdentifier: 
-  _effectTitle: Batterie plus longue
-  _effectDescription: La batterie a plus de vie
+  _effectTitle: Degats aux ennemies
+  _effectDescription: "+ 20 % de d\xE9gats"
   _EnumEffect: 0
   _isInfinite: 1
   _numberOfReusing: 2
