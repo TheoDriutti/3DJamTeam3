@@ -47,7 +47,7 @@ public class FlashLight : MonoBehaviour
 
     void Update()
     {
-        if(_pointLight.intensity == 0)
+        if (_pointLight.intensity == 0)
         {
             _sphereCaster.enabled = false;
         }
@@ -71,7 +71,21 @@ public class FlashLight : MonoBehaviour
             {
                 ChangingMode();
             }
-            
+
+        }
+
+        foreach (GameObject obj in _sphereCaster._enemyTouched)
+        {
+            Debug.Log(obj.name);
+            if (obj.tag == "Enemy")
+            {
+                string typeLampeToKill = obj.GetComponent<EnnemiManager>().lampeToKill.ToString();
+
+                if (typeLampeToKill == "Classique" || typeLampeToKill == _differentsMods.ToString())
+                {
+                    obj.GetComponent<EnnemiManager>().secondesHP -= Time.deltaTime * _nombreDeModsDeLamp[_actualMod]._modIntensity;
+                }
+            }
         }
 
     }
