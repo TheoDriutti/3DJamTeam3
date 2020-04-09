@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: ecd30f8cd3979864680d1da82f00fac8
+<<<<<<< HEAD
+guid: 2ba41aeb496ba214ab901ab380529cd7
+=======
+guid: e6ab81aeebdb5a44e8b37ac0bdd23dba
+>>>>>>> d61c77e5cdaa1de5a47b6ad861a99a0431f79985
 folderAsset: yes
 timeCreated: 1437663017
 licenseType: Store
