@@ -5,15 +5,14 @@ using UnityEngine;
 public class SphereCaster : MonoBehaviour
 {
     public float _sphereRadius, _maxDistance;
-    public LayerMask _layerEnemy;
-    public LayerMask _layerTrap;
+    public LayerMask _layerGlobal;
 
     Vector3 _origin, _direction;
 
     float _currentHitDistance;
 
-     public List<GameObject> _enemyTouched;
-     public List<GameObject> _trapTouched;
+    public List<GameObject> _TrapTouched;
+    public List<GameObject> _EnemyTouched;
 
     void Update()
     {
@@ -21,19 +20,31 @@ public class SphereCaster : MonoBehaviour
         _direction = transform.forward;
 
         _currentHitDistance = _maxDistance;
-        _enemyTouched.Clear();
-        RaycastHit[] _hitsEnemy = Physics.SphereCastAll(_origin, _sphereRadius, _direction, _maxDistance, _layerEnemy, QueryTriggerInteraction.UseGlobal);
-        foreach (RaycastHit hit in _hitsEnemy)
+        _TrapTouched.Clear();
+        _EnemyTouched.Clear();
+        RaycastHit[] _hits = Physics.SphereCastAll(_origin, _sphereRadius, _direction, _maxDistance, _layerGlobal, QueryTriggerInteraction.UseGlobal);
+        foreach (RaycastHit hit in _hits)
         {
-            _enemyTouched.Add(hit.transform.gameObject);
-            _currentHitDistance = hit.distance;
+            if (hit.transform.gameObject.CompareTag("Piege"))
+            {
+                _TrapTouched.Add(hit.transform.gameObject);
+                _currentHitDistance = hit.distance;
+            }
+            if (hit.transform.gameObject.CompareTag("Enemy"))
+            {
+                _EnemyTouched.Add(hit.transform.gameObject);
+                _currentHitDistance = hit.distance;
+            }
+            
         }
-        _trapTouched.Clear();
-        RaycastHit[] _hitsTrap = Physics.SphereCastAll(_origin, _sphereRadius, _direction, _maxDistance, _layerTrap, QueryTriggerInteraction.UseGlobal);
-        foreach (RaycastHit hit in _hitsTrap)
+
+        foreach (GameObject trap in _TrapTouched)
         {
-            _trapTouched.Add(hit.transform.gameObject);
-            _currentHitDistance = hit.distance;
+            if (gameObject.GetComponent<FlashLight>()._actualMod == 0)
+            {
+                trap.gameObject.GetComponent<Trap>().ActiveTrap();
+            }
+            
         }
     }
 
