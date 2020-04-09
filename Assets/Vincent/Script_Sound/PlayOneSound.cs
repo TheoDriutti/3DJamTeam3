@@ -1,5 +1,4 @@
-﻿using Boo.Lang;
-using UnityEditor.PackageManager;
+﻿using UnityEditor.PackageManager;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -25,6 +24,7 @@ public class PlayOneSound : MonoBehaviour
         {
             audioSource.clip = soundToPlay.audio;
             audioSource.loop = soundToPlay.loop;
+            audioSource.volume = soundToPlay.volume;
             Debug.Log(soundToPlay.playOnAwake);
             if (soundToPlay.playOnAwake)
             {
