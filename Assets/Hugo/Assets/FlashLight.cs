@@ -8,7 +8,7 @@ public class FlashLight : MonoBehaviour
      public GameObject _icone01, _icone02, _icone03, _icone04;
     public SphereCaster _sphereCaster;
     bool _isOn = true;
-    int _actualMod = -1;
+    public int _actualMod = -1;
      public EnumDifferentesLight._differentsMods _differentsMods;
     [Header("Reload")]
     [Range(0, 2)]

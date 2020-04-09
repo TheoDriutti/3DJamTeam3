@@ -35,6 +35,12 @@ public class SphereCaster : MonoBehaviour
             _trapTouched.Add(hit.transform.gameObject);
             _currentHitDistance = hit.distance;
         }
+
+        foreach (GameObject trap in _trapTouched)
+        {
+            trap.gameObject.GetComponent<Trap>().ActiveTrap();
+        }
+
     }
 
     void OnDrawGizmosSelected()

@@ -37,11 +37,11 @@ public class Trap : MonoBehaviour
 
         if (Type == "Slow")
         {
-            gameObject.transform.localScale = new Vector3(3, 3, 1);
+            gameObject.transform.localScale = new Vector3(3, 3, 3);
         }
         if (Type == "Stop")
         {
-            gameObject.transform.localScale = new Vector3(2, 2, 1);
+            gameObject.transform.localScale = new Vector3(2, 2, 2);
         }
         
         yield return new WaitForSeconds(1);
