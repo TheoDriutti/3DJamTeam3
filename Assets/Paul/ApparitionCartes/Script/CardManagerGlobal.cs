@@ -14,7 +14,7 @@ public class CardManagerGlobal : MonoBehaviour
     int _tirage01, _tirage02, _tirage03;
     [Header("Apparition des cartes")]
     public int _speedReveals;
-    [Range(0f,1f)]
+    [Range(0f, 1f)]
     public float _timeToWaitBeforeNewCardAppears;
     public float _timeCardSelected;
 
@@ -24,9 +24,9 @@ public class CardManagerGlobal : MonoBehaviour
         _card02 = GameObject.Find("Card02").GetComponent<CardManager>();
         _card03 = GameObject.Find("Card03").GetComponent<CardManager>();
 
-        for (int i= 0; i<_scriptableEffects.Count; i++)
+        for (int i = 0; i < _scriptableEffects.Count; i++)
         {
-           // _cardAlreadyUsed.Add(new CardAlreadyUsed(_scriptableEffects[i]._effectTitle, _scriptableEffects[i]._numberOfReusing, _scriptableEffects[i]._isInfinite));
+            _cardAlreadyUsed.Add(new CardAlreadyUsed(_scriptableEffects[i]._effectTitle, _scriptableEffects[i]._numberOfReusing, _scriptableEffects[i]._isInfinite));
         }
     }
 
@@ -52,7 +52,7 @@ public class CardManagerGlobal : MonoBehaviour
             }
             StartCoroutine(AttributeCard02());
         }
-        
+
     }
     IEnumerator AttributeCard02()
     {
@@ -84,8 +84,6 @@ public class CardManagerGlobal : MonoBehaviour
                 StartCoroutine(AttributeCard03());
             }
         }
-
-            
     }
 
     IEnumerator AttributeCard03()
@@ -115,8 +113,6 @@ public class CardManagerGlobal : MonoBehaviour
                     _cardAlreadyUsed.Remove(_cardAlreadyUsed[_tirage03]);
                 }
             }
-
-               
         }
     }
 }
