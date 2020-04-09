@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageEnemy : MonoBehaviour
 {
-        void OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {

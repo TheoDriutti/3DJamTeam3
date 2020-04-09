@@ -47,6 +47,15 @@ public class FlashLight : MonoBehaviour
 
     void Update()
     {
+        if(_pointLight.intensity == 0)
+        {
+            _sphereCaster.enabled = false;
+        }
+        else
+        {
+            _sphereCaster.enabled = true;
+        }
+
         if (!Timer._isCardVisible)
         {
             if (_life > Mathf.RoundToInt(100 * _effectCapacityMax))
@@ -62,6 +71,7 @@ public class FlashLight : MonoBehaviour
             {
                 ChangingMode();
             }
+            
         }
 
     }
@@ -116,7 +126,7 @@ public class FlashLight : MonoBehaviour
         }
 
         _sphereCaster._sphereRadius = (_pointLight.spotAngle / 5);
-        _sphereCaster._sphereRadius = (_pointLight.range);
+        _sphereCaster._maxDistance = (_pointLight.range);
 
         _icone01.GetComponent<ActualIcone>().ChangingIcone();
         _icone02.GetComponent<ActualIcone>().ChangingIcone();
@@ -172,6 +182,7 @@ public class FlashLight : MonoBehaviour
                 _pointLight.intensity = 0;
             yield return new WaitForSeconds(_timeOffClignotement);
             _pointLight.intensity = _nombreDeModsDeLamp[_actualMod]._modIntensity;
+
             if (_differentsMods.ToString() == "_clignotante" && _isOn)
             {
                 StartCoroutine(Clignotement());
