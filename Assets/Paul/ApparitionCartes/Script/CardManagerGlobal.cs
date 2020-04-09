@@ -84,8 +84,6 @@ public class CardManagerGlobal : MonoBehaviour
                 StartCoroutine(AttributeCard03());
             }
         }
-
-
     }
 
     IEnumerator AttributeCard03()
@@ -93,7 +91,6 @@ public class CardManagerGlobal : MonoBehaviour
         if (_cardAlreadyUsed.Count > 0)
         {
             _tirage03 = Random.Range(0, _cardAlreadyUsed.Count);
-            Debug.Log(_tirage03);
             if (_tirage03 == _tirage01 || _tirage03 == _tirage02)
             {
                 StartCoroutine(AttributeCard03());
@@ -116,8 +113,6 @@ public class CardManagerGlobal : MonoBehaviour
                     _cardAlreadyUsed.Remove(_cardAlreadyUsed[_tirage03]);
                 }
             }
-
-
         }
     }
 }
