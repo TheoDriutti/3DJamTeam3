@@ -38,7 +38,11 @@ public class SphereCaster : MonoBehaviour
 
         foreach (GameObject trap in _trapTouched)
         {
-            trap.gameObject.GetComponent<Trap>().ActiveTrap();
+            if (gameObject.GetComponent<FlashLight>()._actualMod == 0);
+            {
+                trap.gameObject.GetComponent<Trap>().ActiveTrap();
+            }
+            
         }
 
     }
