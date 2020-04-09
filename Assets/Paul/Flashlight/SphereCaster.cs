@@ -5,13 +5,15 @@ using UnityEngine;
 public class SphereCaster : MonoBehaviour
 {
     public float _sphereRadius, _maxDistance;
-    public LayerMask _layerGlobal;
+    public LayerMask _layerEnemy;
+    public LayerMask _layerTrap;
 
     Vector3 _origin, _direction;
 
     float _currentHitDistance;
 
-    [HideInInspector] public List<GameObject> _objectTouched;
+    public List<GameObject> _enemyTouched;
+    public List<GameObject> _trapTouched;
 
     void Update()
     {
@@ -19,11 +21,18 @@ public class SphereCaster : MonoBehaviour
         _direction = transform.forward;
 
         _currentHitDistance = _maxDistance;
-        _objectTouched.Clear();
-        RaycastHit[] _hits = Physics.SphereCastAll(_origin, _sphereRadius, _direction, _maxDistance, _layerGlobal, QueryTriggerInteraction.UseGlobal);
-        foreach (RaycastHit hit in _hits)
+        _enemyTouched.Clear();
+        RaycastHit[] _hitsEnemy = Physics.SphereCastAll(_origin, _sphereRadius, _direction, _maxDistance, _layerEnemy, QueryTriggerInteraction.UseGlobal);
+        foreach (RaycastHit hit in _hitsEnemy)
         {
-            _objectTouched.Add(hit.transform.gameObject);
+            _enemyTouched.Add(hit.transform.gameObject);
+            _currentHitDistance = hit.distance;
+        }
+        _trapTouched.Clear();
+        RaycastHit[] _hitsTrap = Physics.SphereCastAll(_origin, _sphereRadius, _direction, _maxDistance, _layerTrap, QueryTriggerInteraction.UseGlobal);
+        foreach (RaycastHit hit in _hitsTrap)
+        {
+            _trapTouched.Add(hit.transform.gameObject);
             _currentHitDistance = hit.distance;
         }
     }

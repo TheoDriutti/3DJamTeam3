@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Paul/ApparitionCartes/ScrptableObject/DistanceLight.asset.meta
 guid: e0553a97de370c64ca1bb33d17ee8885
+=======
+guid: 8b064e58d7f7d374ca934d2484083566
+>>>>>>> d61c77e5cdaa1de5a47b6ad861a99a0431f79985:Assets/Paul/ApparitionCartes/ScrptableObject/CouleurLampe.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0

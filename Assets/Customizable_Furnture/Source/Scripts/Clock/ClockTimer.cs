@@ -9,11 +9,14 @@ public class ClockTimer : MonoBehaviour {
     public float clockSpeedAsk = 1.0f;
     [HideInInspector] public bool pointFlicker =true;
 	[HideInInspector] public bool reverse=false;
+    public DisplaySelectedObject _display;
+
 
     [Range(0,24)]
     public int _heureDeDebut;
     [Range(0, 24)]
     public int _heureDeFin;
+
     public static bool _isCardVisible;
     public GameObject _cardManager;
 
@@ -24,17 +27,20 @@ public class ClockTimer : MonoBehaviour {
     {
         Commencer();
     }
-    void Commencer()
+    public void Commencer()
     {
-        clockSpeed = clockSpeedAsk;
-        reverse = false;
-        Debug.Log(_heureDeDebut);
+            clockSpeed = clockSpeedAsk;
+            FindObjectOfType<DigitalClockValue>().reverse = false;
+            FindObjectOfType<DigitalClock>().SetReverseClock(false);
+            initialHoursValue = _heureDeDebut;
     }
 
-    void RetourEnArriere()
+    public void RetourEnArriere()
     {
-        reverse = true;
-        clockSpeed = clockSpeedAsk * 20 ;
+        _isCardVisible = true;
+        FindObjectOfType<DigitalClockValue>().reverse = true;
+        FindObjectOfType<DigitalClock>().SetReverseClock(true);
+        FindObjectOfType<DigitalClock>().clockSpeed = clockSpeedAsk*10;
     }
 
     void OnEnable () {
@@ -42,7 +48,6 @@ public class ClockTimer : MonoBehaviour {
 		analogicClock = transform.GetComponentInChildren<AnalogicClock>();
 		if (digitalClock != null) {
 			digitalClock.clockSpeed = clockSpeed;
-			digitalClock.SetReverseClock(reverse);
 			if (!pointFlicker)digitalClock.pointFlicker=false;
 			if (digitalClock.hoursDCV!=null)digitalClock.hoursDCV.ChangeToTargetTime (initialHoursValue);
 			if (digitalClock.minutesDCV!=null)digitalClock.minutesDCV.ChangeToTargetTime (initialMinutesValue);
@@ -55,19 +60,10 @@ public class ClockTimer : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
-		if (digitalClock != null) {
-			digitalClock.clockSpeed = clockSpeed;
-		}
-        if (initialHoursValue == _heureDeFin)
-        {
-            Commencer();
-            _isCardVisible = true;
-            _cardManager.SetActive(true);
-            FindObjectOfType<CardManagerGlobal>().AttributeCard01();
-        }
+        if (!_isCardVisible)
+            Chrono();
     }
 
     public void EteindreLaCard()
@@ -76,5 +72,15 @@ public class ClockTimer : MonoBehaviour {
         FindObjectOfType<FlashLight>().IsLifeUpOrDown();
         _cardManager.SetActive(false);
         FindObjectOfType<WavesManager>().NewWave();
+        clockSpeed = clockSpeedAsk;
+        
+    }
+
+    void Chrono()
+    {
+        if (digitalClock != null)
+        {
+            digitalClock.clockSpeed = clockSpeed;
+        }
     }
 }
