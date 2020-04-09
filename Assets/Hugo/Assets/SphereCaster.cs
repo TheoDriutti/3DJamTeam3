@@ -11,7 +11,8 @@ public class SphereCaster : MonoBehaviour
 
     float _currentHitDistance;
 
-    [HideInInspector] public List<GameObject> _objectTouched;
+    public List<GameObject> _TrapTouched;
+    public List<GameObject> _EnemyTouched;
 
     void Update()
     {
@@ -19,12 +20,31 @@ public class SphereCaster : MonoBehaviour
         _direction = transform.forward;
 
         _currentHitDistance = _maxDistance;
-        _objectTouched.Clear();
+        _TrapTouched.Clear();
+        _EnemyTouched.Clear();
         RaycastHit[] _hits = Physics.SphereCastAll(_origin, _sphereRadius, _direction, _maxDistance, _layerGlobal, QueryTriggerInteraction.UseGlobal);
         foreach (RaycastHit hit in _hits)
         {
-            _objectTouched.Add(hit.transform.gameObject);
-            _currentHitDistance = hit.distance;
+            if (hit.transform.gameObject.CompareTag("Piege"))
+            {
+                _TrapTouched.Add(hit.transform.gameObject);
+                _currentHitDistance = hit.distance;
+            }
+            if (hit.transform.gameObject.CompareTag("Enemy"))
+            {
+                _EnemyTouched.Add(hit.transform.gameObject);
+                _currentHitDistance = hit.distance;
+            }
+            
+        }
+
+        foreach (GameObject trap in _TrapTouched)
+        {
+            if (gameObject.GetComponent<FlashLight>()._actualMod == 0)
+            {
+                trap.gameObject.GetComponent<Trap>().ActiveTrap();
+            }
+            
         }
     }
 
