@@ -26,7 +26,7 @@ public class CardManagerGlobal : MonoBehaviour
 
         for (int i= 0; i<_scriptableEffects.Count; i++)
         {
-            _cardAlreadyUsed.Add(new CardAlreadyUsed(_scriptableEffects[i]._effectTitle, _scriptableEffects[i]._numberOfReusing, _scriptableEffects[i]._isInfinite));
+           // _cardAlreadyUsed.Add(new CardAlreadyUsed(_scriptableEffects[i]._effectTitle, _scriptableEffects[i]._numberOfReusing, _scriptableEffects[i]._isInfinite));
         }
     }
 
