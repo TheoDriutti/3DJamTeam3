@@ -15,5 +15,5 @@ MonoBehaviour:
   _effectTitle: nz
   _effectDescription: ' zgegz '
   _EnumEffect: 0
-  _isInfinite: 0
-  _numberOfReusing: 0
+  _isInfinite: 1
+  _numberOfReusing: 2

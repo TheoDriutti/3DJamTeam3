@@ -74,7 +74,7 @@ public class FlashLight : MonoBehaviour
 
         }
 
-        foreach (GameObject obj in _sphereCaster._enemyTouched)
+        /*foreach (GameObject obj in _sphereCaster._enemyTouched)
         {
             Debug.Log(obj.name);
             if (obj.tag == "Enemy")
@@ -86,7 +86,7 @@ public class FlashLight : MonoBehaviour
                     obj.GetComponent<EnnemiManager>().secondesHP -= Time.deltaTime * _nombreDeModsDeLamp[_actualMod]._modIntensity;
                 }
             }
-        }
+        }*/
 
     }
     void SwitchOnOff()
