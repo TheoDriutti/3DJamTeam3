@@ -6,7 +6,7 @@ public class WavesManager : MonoBehaviour
 {
     [Header("La size correspond au nombres de vagues")]
     public Wave[] _numberOfWaves;
-    int _actualWave=-1;
+    [HideInInspector] public int _actualWave=-1;
 
     void Start()
     {
@@ -22,16 +22,29 @@ public class WavesManager : MonoBehaviour
     public void NewWave()
     {
         _actualWave++;
-        if(_actualWave == _numberOfWaves.Length)
+        if (_actualWave == _numberOfWaves.Length)
         {
             Debug.Log("Vous avez fini le jeu");
         }
         else
         {
             Debug.Log("Vague " + (_actualWave + 1));
-            Debug.Log("Je fais spawn " + _numberOfWaves[_actualWave]._numberPetitsMonstres + " petits monstres");
-            Debug.Log("Je fais spawn " + _numberOfWaves[_actualWave]._numberGrosMonstres + " gros monstres");
-            Debug.Log("Je fais spawn " + _numberOfWaves[_actualWave]._numberOmbresMonstres + " ombres");
+
+            //Debug.Log("Je fais spawn " + _numberOfWaves[_actualWave]._numberPetitsMonstres + " petits monstres");
+            FindObjectOfType<SpawnManager>()._nombreASpawnPetit = _numberOfWaves[_actualWave]._numberPetitsMonstres;
+
+            //Debug.Log("Je fais spawn " + _numberOfWaves[_actualWave]._numberGrosMonstres + " gros monstres");
+            FindObjectOfType<SpawnManager>()._nombreASpawnGros = _numberOfWaves[_actualWave]._numberGrosMonstres;
+
+
+            //Debug.Log("Je fais spawn " + _numberOfWaves[_actualWave]._numberOmbresMonstres + " ombres");
+            FindObjectOfType<SpawnManager>()._nombreASpawnOmbres = _numberOfWaves[_actualWave]._numberOmbresMonstres;
+
+
+
+            FindObjectOfType<SpawnManager>().AttribuerMobsParSpawner();
+
+
         }
     }
 }

@@ -79,6 +79,7 @@ public class CardManager : MonoBehaviour
         _goDown = true;
         yield return new WaitForSeconds(FindObjectOfType<CardManagerGlobal>()._timeCardSelected);
         FindObjectOfType<CardManagerGlobal>()._cardSelected = "";
+        FindObjectOfType<Timer>().EteindreLaCard();
     }
 
     void AffectedEffect()
@@ -86,7 +87,6 @@ public class CardManager : MonoBehaviour
         if(_enumEffect.ToString() == "AugmentationDureeDeVieTorche")
         {
             FindObjectOfType<FlashLight>()._effectMultiplicateurDureeDeVieTorch *= FindObjectOfType<EffectManager>()._multiplicateurDureeVieTorche;
-            Debug.Log(FindObjectOfType<FlashLight>()._effectMultiplicateurDureeDeVieTorch);
         }
         else if (_enumEffect.ToString() == "AugmentationDistanceRayonDeLumiere")
         {
