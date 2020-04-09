@@ -1,5 +1,4 @@
-﻿using Boo.Lang;
-using UnityEditor.PackageManager;
+﻿using UnityEditor.PackageManager;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]

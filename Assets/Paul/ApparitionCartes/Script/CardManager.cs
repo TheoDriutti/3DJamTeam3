@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 public class CardManager : MonoBehaviour
 {
-    [HideInInspector] public Text _titreText, _descriptionText;
+     public Text _titreText, _descriptionText;
 
     [HideInInspector] public ScriptableEffect _scriptableEffect;
 
