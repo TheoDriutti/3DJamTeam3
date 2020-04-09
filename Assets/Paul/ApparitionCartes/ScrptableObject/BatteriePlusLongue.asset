@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BatteriePlusLongue
   m_EditorClassIdentifier: 
   _effectTitle: Batterie plus longue
-  _effectDescription: "La capacit\xE9 de la batterie est am\xE9lior\xE9."
-  _EnumEffect: 2
+  _effectDescription: La batterie a plus de vie
+  _EnumEffect: 0
   _isInfinite: 1
   _numberOfReusing: 2
