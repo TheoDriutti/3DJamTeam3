@@ -8,6 +8,7 @@ TagManager:
   - SpawnerPetits
   - SpawnerGros
   - SpawnerOmbres
+  - Trap
   layers:
   - Default
   - TransparentFX

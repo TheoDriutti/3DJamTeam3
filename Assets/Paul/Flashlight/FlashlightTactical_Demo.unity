@@ -910,8 +910,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5002f49b42ebe448944a5f4116f583c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enumName: 3
-  _id: 4
 --- !u!114 &80463215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1244,8 +1242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5002f49b42ebe448944a5f4116f583c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enumName: 1
-  _id: 2
 --- !u!114 &116444471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5249,10 +5245,10 @@ MonoBehaviour:
   _maxDistance: 25
   _layerEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   _layerTrap:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _enemyTouched: []
   _trapTouched: []
 --- !u!4 &655149025
@@ -6203,9 +6199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8851cab5191814b41b9e6add0cf359ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minutesAsk: 0
-  _secondsAsk: 10
-  _cardManager: {fileID: 1113225603}
 --- !u!114 &711900248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8925,8 +8918,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5002f49b42ebe448944a5f4116f583c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enumName: 2
-  _id: 3
 --- !u!114 &1039332173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9741,9 +9732,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardSelected: 
   _scriptableEffects:
-  - {fileID: 11400000, guid: 1f7721fa93eac804793971626386d05e, type: 2}
-  - {fileID: 11400000, guid: e0553a97de370c64ca1bb33d17ee8885, type: 2}
-  - {fileID: 11400000, guid: d7e693ed18fbf74409461f1cd1e17375, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _cardAlreadyUsed: []
   _speedReveals: 20
   _timeToWaitBeforeNewCardAppears: 0.047
@@ -11021,7 +11012,7 @@ GameObject:
   - component: {fileID: 1319830169}
   m_Layer: 9
   m_Name: Trap
-  m_TagString: Enemy
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11033,11 +11024,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319830166}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1808a790eb6d9854f8cd3ed8ded574a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 249c51bb6ea8a7948b532697c5cdbe33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToReload: 2
+  Type: Slow
 --- !u!54 &1319830168
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11085,7 +11078,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96ba584ea5c8a7340a2de90fa2857be4, type: 2}
+  - {fileID: 2100000, guid: c063d66f638db454a936abbd64a38ac3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11113,7 +11106,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319830166}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1319830172
 Transform:
   m_ObjectHideFlags: 0
@@ -11122,7 +11115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319830166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.618, y: 0.83, z: -8.63}
+  m_LocalPosition: {x: 2.36, y: 0.83, z: -12.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11178,8 +11171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5002f49b42ebe448944a5f4116f583c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enumName: 0
-  _id: 1
 --- !u!114 &1331309138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17503,7 +17494,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 654970311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c8c3b889aaed244491205d1fc92e048, type: 3}
+  m_Script: {fileID: 11500000, guid: 11e072f0e725e8240bcc7c851cf1be9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _icone01: {fileID: 1331309135}
@@ -17511,44 +17502,17 @@ MonoBehaviour:
   _icone03: {fileID: 1039332170}
   _icone04: {fileID: 80463212}
   _sphereCaster: {fileID: 654970312}
+  _actualMod: -1
   _differentsMods: 0
-  _reloadPerSecond: 2
+  _reloadPerSecond: 0
   _waitBeforeReloadSecond: 2
   _damage: 0
   _lifeStart: 100
-  _pointLight: {fileID: 704882501108558142}
-  _pourcentageBatterie: {fileID: 1559062893}
-  _nombreDeModsDeLamp:
-  - _differentsMods: 3
-    _modRadius: 20
-    _modDistance: 20
-    _modIntensity: 1
-    _color: {r: 1, g: 0, b: 0, a: 1}
-    _consomationPerSeconds: 7
-    _modDamage: 0
-  - _differentsMods: 1
-    _modRadius: 60
-    _modDistance: 50
-    _modIntensity: 2
-    _color: {r: 0.427451, g: 1, b: 0.5004887, a: 1}
-    _consomationPerSeconds: 1
-    _modDamage: 30
-  - _differentsMods: 2
-    _modRadius: 60
-    _modDistance: 50
-    _modIntensity: 2
-    _color: {r: 0.4292453, g: 0.6462775, b: 1, a: 1}
-    _consomationPerSeconds: 7
-    _modDamage: 30
-  - _differentsMods: 3
-    _modRadius: 60
-    _modDistance: 50
-    _modIntensity: 2
-    _color: {r: 1, g: 0.427451, b: 0.8873187, a: 1}
-    _consomationPerSeconds: 2
-    _modDamage: 30
-  _timeOnClignotement: 3
-  _timeOffClignotement: 1
+  _pointLight: {fileID: 0}
+  _pourcentageBatterie: {fileID: 0}
+  _nombreDeModsDeLamp: []
+  _timeOnClignotement: 0
+  _timeOffClignotement: 0
   _effectMultiplicateurDureeDeVieTorch: 1
   _effectMultiplicateurDistanceRayonLumiere: 1
   _effectCapacityMax: 1
