@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class FlashLight : MonoBehaviour
 {
-    [HideInInspector] public GameObject _icone01, _icone02, _icone03, _icone04;
+    public GameObject _icone01, _icone02, _icone03, _icone04;
     public SphereCaster _sphereCaster;
     bool _isOn = true;
     int _actualMod = -1;
-    [HideInInspector] public EnumDifferentesLight._differentsMods _differentsMods;
+     public EnumDifferentesLight._differentsMods _differentsMods;
     [Header("Reload")]
     [Range(0, 2)]
     public float _reloadPerSecond;
@@ -18,8 +18,8 @@ public class FlashLight : MonoBehaviour
     [Range(0, 100)]
     public float _lifeStart = 100;
     float _life, _consommation;
-    [HideInInspector] public Light _pointLight;
-    [HideInInspector] public Text _pourcentageBatterie;
+    public Light _pointLight;
+    public Text _pourcentageBatterie;
 
     [Header("ModeTorch")]
     public NombdeDeMods[] _nombreDeModsDeLamp;
@@ -56,7 +56,7 @@ public class FlashLight : MonoBehaviour
             _sphereCaster.enabled = true;
         }
 
-        if (!Timer._isCardVisible)
+        if (!ClockTimer._isCardVisible)
         {
             if (_life > Mathf.RoundToInt(100 * _effectCapacityMax))
                 _life = Mathf.RoundToInt(100 * _effectCapacityMax);
@@ -164,7 +164,7 @@ public class FlashLight : MonoBehaviour
             yield return new WaitForSeconds(1 / _consommation * _effectMultiplicateurDureeDeVieTorch);
             _life--;
             _pourcentageBatterie.text = _life + " %";
-            if (_life > 0 && !Timer._isCardVisible)
+            if (_life > 0 && !ClockTimer._isCardVisible)
                 StartCoroutine(LifeDown());
             else
                 SwitchOnOff();
@@ -183,13 +183,13 @@ public class FlashLight : MonoBehaviour
             yield return new WaitForSeconds(1 / _reloadPerSecond / _effectMultiplicateurRechargeBatterie);
             _life++;
             _pourcentageBatterie.text = _life + " %";
-            if (_life < 100 && !Timer._isCardVisible)
+            if (_life < 100 && !ClockTimer._isCardVisible)
                 StartCoroutine(LifeUp());
         }
     }
     IEnumerator Clignotement()
     {
-        if (_isOn && !Timer._isCardVisible)
+        if (_isOn && !ClockTimer._isCardVisible)
         {
             yield return new WaitForSeconds(_timeOnClignotement);
             if (_differentsMods.ToString() == "_clignotante" && _isOn)

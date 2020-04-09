@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
-  m_Name: "Pi\xE8ge+zone"
+  m_Script: {fileID: 11500000, guid: 056f9c6e8dceaf94c9dd744ee256d659, type: 3}
+  m_Name: Batterie 1
   m_EditorClassIdentifier: 
-  _effectTitle: "Pi\xE8ge \xE0 longue port\xE9e"
-  _effectDescription: "Augmente la zone d'effet des pi\xE8ges de"
-  _EnumEffect: 8
-  _isInfinite: 0
-  _numberOfReusing: 3
+  _effectTitle: Batterie
+  _effectDescription: + longue
+  _EnumEffect: 0
+  _isInfinite: 1
+  _numberOfReusing: 5

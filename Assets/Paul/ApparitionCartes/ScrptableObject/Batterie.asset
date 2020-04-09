@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
-  m_Name: SlowEnnemi 1
+  m_Script: {fileID: 11500000, guid: 056f9c6e8dceaf94c9dd744ee256d659, type: 3}
+  m_Name: Batterie
   m_EditorClassIdentifier: 
-  _effectTitle: Sol visqueux
-  _effectDescription: 'Ralentit la vitsse des ennemis de '
-  _EnumEffect: 4
-  _isInfinite: 0
-  _numberOfReusing: 3
+  _effectTitle: Batterie3
+  _effectDescription: + longue3
+  _EnumEffect: 0
+  _isInfinite: 1
+  _numberOfReusing: 5
