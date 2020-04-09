@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
+  m_Name: "Zone pi\xE8ge"
+  m_EditorClassIdentifier: 
+  _effectTitle: "Pi\xE8ges \xE9largis"
+  _effectDescription: "Augmente la zone d'effet des pi\xE8ges de 15%"
+  _EnumEffect: 8
+  _isInfinite: 0
+  _numberOfReusing: 4

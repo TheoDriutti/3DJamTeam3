@@ -7,7 +7,7 @@ public class ActualIcone : MonoBehaviour
 {
 
     public EnumDifferentesLight._differentsMods _enumName;
-    [HideInInspector] public int _id;
+    public int _id;
     float _ecart = 115;
 
     void Start()

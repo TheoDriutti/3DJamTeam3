@@ -11,7 +11,7 @@ public class FlashLight : MonoBehaviour
     public int _actualMod = -1;
      public EnumDifferentesLight._differentsMods _differentsMods;
     [Header("Reload")]
-    [Range(0, 2)]
+    [Range(0, 5)]
     public float _reloadPerSecond;
     public float _waitBeforeReloadSecond = 2;
      public int _damage;
