@@ -2,18 +2,42 @@
 using System.Collections;
 
 public class ClockTimer : MonoBehaviour {
-	public int initialHoursValue;
-	public int initialMinutesValue;
-	public int initialSecondsValue;
-	public float clockSpeed=1.0f;
-	public bool pointFlicker=true;
-	public bool reverse=false;
+	[HideInInspector] public int initialHoursValue;
+    [HideInInspector] public int initialMinutesValue;
+    [HideInInspector] public int initialSecondsValue;
+    [HideInInspector] public float clockSpeed =1.0f;
+    public float clockSpeedAsk = 1.0f;
+    [HideInInspector] public bool pointFlicker =true;
+	[HideInInspector] public bool reverse=false;
 
+    [Range(0,24)]
+    public int _heureDeDebut;
+    [Range(0, 24)]
+    public int _heureDeFin;
+    public static bool _isCardVisible;
+    public GameObject _cardManager;
 
-	private DigitalClock digitalClock;
+    private DigitalClock digitalClock;
 	private AnalogicClock analogicClock;
-	// Use this for initialization
-	void OnEnable () {
+
+    void Awake()
+    {
+        Commencer();
+    }
+    void Commencer()
+    {
+        clockSpeed = clockSpeedAsk;
+        reverse = false;
+        Debug.Log(_heureDeDebut);
+    }
+
+    void RetourEnArriere()
+    {
+        reverse = true;
+        clockSpeed = clockSpeedAsk * 20 ;
+    }
+
+    void OnEnable () {
 		digitalClock = transform.GetComponentInChildren<DigitalClock> ();
 		analogicClock = transform.GetComponentInChildren<AnalogicClock>();
 		if (digitalClock != null) {
@@ -32,9 +56,25 @@ public class ClockTimer : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		if (digitalClock != null) {
 			digitalClock.clockSpeed = clockSpeed;
 		}
-	}
+        if (initialHoursValue == _heureDeFin)
+        {
+            Commencer();
+            _isCardVisible = true;
+            _cardManager.SetActive(true);
+            FindObjectOfType<CardManagerGlobal>().AttributeCard01();
+        }
+    }
+
+    public void EteindreLaCard()
+    {
+        _isCardVisible = false;
+        FindObjectOfType<FlashLight>().IsLifeUpOrDown();
+        _cardManager.SetActive(false);
+        FindObjectOfType<WavesManager>().NewWave();
+    }
 }
