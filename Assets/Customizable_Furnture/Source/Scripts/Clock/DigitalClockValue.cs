@@ -12,7 +12,11 @@ public class DigitalClockValue : MonoBehaviour {
 	public int tensValue=10;
 	public bool reverse=false;
 
-	public void ChangeToTargetTime(int value){
+    void Start()
+    {
+    }
+
+    public void ChangeToTargetTime(int value){
 		if (!reverse)
 			currentValue = value-1;
 		else 
