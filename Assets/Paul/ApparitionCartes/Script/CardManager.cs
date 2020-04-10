@@ -98,7 +98,7 @@ public class CardManager : MonoBehaviour
         }
         else if (_enumEffect.ToString() == "TempsRechargementPiege")
         {
-
+            FindObjectOfType<Trap>().multiplicateur *= FindObjectOfType<EffectManager>()._multiplicateurRechargementPiege;
         }
         else if (_enumEffect.ToString() == "RalentissementMob")
         { 
@@ -114,11 +114,11 @@ public class CardManager : MonoBehaviour
         }
         else if (_enumEffect.ToString() == "AugmentationDureePieges")
         {
-
+            FindObjectOfType<Trap>().TempsDeViePiege *= FindObjectOfType<EffectManager>()._multiplicateurDureeViePiege;
         }
         else if (_enumEffect.ToString() == "AugmentationZonePieges")
         {
-
+            FindObjectOfType<Trap>().RadiusMultiplicateur *= FindObjectOfType<EffectManager>()._multiplicateurZonePiege;
         }
         else if (_enumEffect.ToString() == "RechargePlusRapide")
         {
