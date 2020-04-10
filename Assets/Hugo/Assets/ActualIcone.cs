@@ -17,9 +17,16 @@ public class ActualIcone : MonoBehaviour
     }
     public void ChangingIcone()
     {
-        if(FindObjectOfType<FlashLight>()._differentsMods == _enumName)
+        if (!ClockTimer._isCardVisible)
         {
-            this.GetComponent<Image>().color = new Color(255, 255, 255, 0.9f);
+            if (FindObjectOfType<FlashLight>()._differentsMods == _enumName)
+            {
+                this.GetComponent<Image>().color = new Color(255, 255, 255, 0.9f);
+            }
+            else
+            {
+                this.GetComponent<Image>().color = new Color(255, 255, 255, 0.2f);
+            }
         }
         else
         {
