@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
 
     int _compteurSpawnerPetits, _compteurSpawnerGros, _compteurSpawnerOmbres;
 
-    [HideInInspector] public int _nombreASpawnPetit, _nombreASpawnGros, _nombreASpawnOmbres; 
+    [HideInInspector] public int _nombreASpawnPetit, _nombreASpawnGros, _nombreASpawnOmbres;
 
     void Awake()
     {
@@ -25,18 +25,17 @@ public class SpawnManager : MonoBehaviour
         _spawnerOmbres = GameObject.FindGameObjectsWithTag("SpawnerOmbres");
         _compteurSpawnerOmbres = _spawnerOmbres.Length;
     }
-
     public void AttribuerMobsParSpawner()
     {
         //petits
 
         for (int i = 0; i < _spawnerPetits.Length; i++)
         {
-           int _randomPetit = Random.Range(0, _nombreASpawnPetit);
-           _spawnerPetits[i].GetComponent<Spawner>()._numberToSpawn = _randomPetit;
+            int _randomPetit = Random.Range(0, _nombreASpawnPetit);
+            _spawnerPetits[i].GetComponent<Spawner>()._numberToSpawn = _randomPetit;
             _spawnerPetits[i].GetComponent<Spawner>()._hasToWork = true;
-           _nombreASpawnPetit -= _randomPetit;
-            if(i == _spawnerPetits.Length - 1)
+            _nombreASpawnPetit -= _randomPetit;
+            if (i == _spawnerPetits.Length - 1)
             {
                 _spawnerPetits[i].GetComponent<Spawner>()._numberToSpawn = _nombreASpawnPetit;
                 _spawnerPetits[i].GetComponent<Spawner>()._hasToWork = true;

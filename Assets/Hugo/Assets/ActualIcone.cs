@@ -13,7 +13,7 @@ public class ActualIcone : MonoBehaviour
     void Start()
     {
         ChangingIcone();
-        this.transform.position = new Vector3(this.transform.position.x + (_ecart * (_id-1)), this.transform.position.y, this.transform.position.z);
+        this.transform.position = new Vector3(this.transform.position.x + (_ecart * (_id - 1)), this.transform.position.y, this.transform.position.z);
     }
     public void ChangingIcone()
     {
