@@ -25,7 +25,6 @@ public class PlayOneSound : MonoBehaviour
             audioSource.clip = soundToPlay.audio;
             audioSource.loop = soundToPlay.loop;
             audioSource.volume = soundToPlay.volume;
-            Debug.Log(soundToPlay.playOnAwake);
             if (soundToPlay.playOnAwake)
             {
                 PlaySound();
