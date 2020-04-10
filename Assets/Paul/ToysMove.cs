@@ -24,7 +24,7 @@ public class ToysMove : MonoBehaviour
             _rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
     }
-    
+
     void Update()
     {
         if (_canMove)
