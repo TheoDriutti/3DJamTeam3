@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     public IEnumerator SpawnMob()
     {
         yield return new WaitForSeconds(FindObjectOfType<WavesManager>()._numberOfWaves[FindObjectOfType<WavesManager>()._actualWave]._secondsBeforeSpawn);
-        Instantiate(_mobToSpawn);
+        Instantiate(_mobToSpawn, transform);
         if(_numberToSpawn > 0)
         {
             StartCoroutine(SpawnMob());
