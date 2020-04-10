@@ -14,7 +14,7 @@ public class FlashLight : MonoBehaviour
     [Range(0, 5)]
     public float _reloadPerSecond;
     public float _waitBeforeReloadSecond = 2;
-     public int _damage;
+     public float _damage;
     [Range(0, 100)]
     public float _lifeStart = 100;
     float _life, _consommation;
@@ -74,19 +74,20 @@ public class FlashLight : MonoBehaviour
 
         }
 
-        /*foreach (GameObject obj in _sphereCaster._enemyTouched)
+        foreach (GameObject obj in _sphereCaster._enemyTouched)
         {
-            Debug.Log(obj.name);
-            if (obj.tag == "Enemy")
+            if (obj != null && obj.tag == "Enemy")
             {
-                string typeLampeToKill = obj.GetComponent<EnnemiManager>().lampeToKill.ToString();
-
-                if (typeLampeToKill == "Classique" || typeLampeToKill == _differentsMods.ToString())
+                EnnemiManager enMa = obj.GetComponent<EnnemiManager>();
+                string typeLampeToKill = enMa.lampeToKill.ToString();
+                Debug.Log(typeLampeToKill == _differentsMods.ToString());
+                if (typeLampeToKill == "_classique" || typeLampeToKill == _differentsMods.ToString())
                 {
-                    obj.GetComponent<EnnemiManager>().secondesHP -= Time.deltaTime * _nombreDeModsDeLamp[_actualMod]._modIntensity;
+                    Debug.Log(typeLampeToKill + "  " + enMa.secondesHP);
+                    enMa.secondesHP -= Time.deltaTime * _nombreDeModsDeLamp[_actualMod]._modDamage;
                 }
             }
-        }*/
+        }
 
     }
     void SwitchOnOff()

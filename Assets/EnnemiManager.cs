@@ -22,17 +22,27 @@ public class EnnemiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //move towards the player
-        float step = moveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
-        if (secondesHP < 0)
+        if (ClockTimer._isCardVisible)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
+        }
+
+        if (secondesHP < 0.2f)
+        {
+            Destroy(this.gameObject);
         }
 
         if (Vector3.Distance(targetPos, transform.position) < attackRange)
         {
             // player prend des dégâts
         }
+        else
+        {
+            //move towards the player
+            float step = moveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+        }
+
     }
 }
+

@@ -12,5 +12,5 @@ public class NombdeDeMods
     public float _modIntensity;
     public Color _color = Color.white;
     public int _consomationPerSeconds;
-    public int _modDamage;
+    public float _modDamage;
 }

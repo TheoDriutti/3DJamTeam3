@@ -8,7 +8,7 @@ public class DamageEnemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            int _damage = FindObjectOfType<FlashLight>()._damage;
+            float _damage = FindObjectOfType<FlashLight>()._damage;
             Debug.Log("Je mets " + _damage);
         }
     }
