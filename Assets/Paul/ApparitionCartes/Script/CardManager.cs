@@ -80,6 +80,7 @@ public class CardManager : MonoBehaviour
         yield return new WaitForSeconds(FindObjectOfType<CardManagerGlobal>()._timeCardSelected);
         FindObjectOfType<CardManagerGlobal>()._cardSelected = "";
         FindObjectOfType<ClockTimer>().EteindreLaCard();
+        FindObjectOfType<SpawnManager>().AttribuerMobsParSpawner();
     }
 
     void AffectedEffect()

@@ -17,7 +17,7 @@ public class ActualIcone : MonoBehaviour
     }
     public void ChangingIcone()
     {
-        if (!ClockTimer._isCardVisible)
+        if (FindObjectOfType<FlashLight>()._pointLight.enabled)
         {
             if (FindObjectOfType<FlashLight>()._differentsMods == _enumName)
             {

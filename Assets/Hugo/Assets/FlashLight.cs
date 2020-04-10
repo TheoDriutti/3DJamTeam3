@@ -110,6 +110,11 @@ public class FlashLight : MonoBehaviour
                 StartCoroutine(LifeDown());
             }
         }
+
+        _icone01.GetComponent<ActualIcone>().ChangingIcone();
+        _icone02.GetComponent<ActualIcone>().ChangingIcone();
+        _icone03.GetComponent<ActualIcone>().ChangingIcone();
+        _icone04.GetComponent<ActualIcone>().ChangingIcone();
     }
     void ChangingMode()
     {
