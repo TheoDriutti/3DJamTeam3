@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
 
     int _compteurSpawnerPetits, _compteurSpawnerGros, _compteurSpawnerOmbres;
 
-    [HideInInspector] public int _nombreASpawnPetit, _nombreASpawnGros, _nombreASpawnOmbres; 
+    [HideInInspector] public int _nombreASpawnPetit, _nombreASpawnGros, _nombreASpawnOmbres;
 
     void Awake()
     {
@@ -25,52 +25,57 @@ public class SpawnManager : MonoBehaviour
         _spawnerOmbres = GameObject.FindGameObjectsWithTag("SpawnerOmbres");
         _compteurSpawnerOmbres = _spawnerOmbres.Length;
     }
-
     public void AttribuerMobsParSpawner()
     {
         //petits
 
-        for (int i = 0; i < _spawnerPetits.Length-1; i++)
+        for (int i = 0; i < _spawnerPetits.Length; i++)
         {
-           int _randomPetit = Random.Range(0, _nombreASpawnPetit);
-           _spawnerPetits[i].GetComponent<Spawner>()._numberToSpawn = _randomPetit;
-           _nombreASpawnPetit -= _randomPetit;
-            StartCoroutine(_spawnerPetits[i].GetComponent<Spawner>().SpawnMob());
+            int _randomPetit = Random.Range(0, _nombreASpawnPetit);
+            _spawnerPetits[i].GetComponent<Spawner>()._numberToSpawn = _randomPetit;
+            _spawnerPetits[i].GetComponent<Spawner>()._hasToWork = true;
+            _nombreASpawnPetit -= _randomPetit;
+            if (i == _spawnerPetits.Length - 1)
+            {
+                _spawnerPetits[i].GetComponent<Spawner>()._numberToSpawn = _nombreASpawnPetit;
+                _spawnerPetits[i].GetComponent<Spawner>()._hasToWork = true;
+            }
 
         }
-
-        _spawnerPetits[_spawnerPetits.Length-1].GetComponent<Spawner>()._numberToSpawn = _nombreASpawnPetit;
-        StartCoroutine(_spawnerPetits[_spawnerPetits.Length - 1].GetComponent<Spawner>().SpawnMob());
 
 
         //gros
 
-        for (int i = 0; i < _spawnerGros.Length - 1; i++)
+        for (int i = 0; i < _spawnerGros.Length; i++)
         {
             int _randomGros = Random.Range(0, _nombreASpawnGros);
             _spawnerGros[i].GetComponent<Spawner>()._numberToSpawn = _randomGros;
+            _spawnerGros[i].GetComponent<Spawner>()._hasToWork = true;
             _nombreASpawnGros -= _randomGros;
-            StartCoroutine(_spawnerGros[i].GetComponent<Spawner>().SpawnMob());
+            if (i == _spawnerGros.Length - 1)
+            {
+                _spawnerGros[i].GetComponent<Spawner>()._numberToSpawn = _nombreASpawnGros;
+                _spawnerGros[i].GetComponent<Spawner>()._hasToWork = true;
+            }
 
         }
 
-        _spawnerGros[_spawnerGros.Length - 1].GetComponent<Spawner>()._numberToSpawn = _nombreASpawnGros;
-        StartCoroutine(_spawnerGros[_spawnerGros.Length - 1].GetComponent<Spawner>().SpawnMob());
 
 
         //ombres
 
-        for (int i = 0; i < _spawnerOmbres.Length - 1; i++)
+        for (int i = 0; i < _spawnerOmbres.Length; i++)
         {
             int _randomOmbres = Random.Range(0, _nombreASpawnOmbres);
             _spawnerOmbres[i].GetComponent<Spawner>()._numberToSpawn = _randomOmbres;
             _nombreASpawnOmbres -= _randomOmbres;
-            StartCoroutine(_spawnerOmbres[i].GetComponent<Spawner>().SpawnMob());
+            if (i == _spawnerOmbres.Length - 1)
+            {
+                _spawnerOmbres[i].GetComponent<Spawner>()._numberToSpawn = _nombreASpawnOmbres;
+                _spawnerOmbres[i].GetComponent<Spawner>()._hasToWork = true;
+            }
 
 
         }
-
-        _spawnerOmbres[_spawnerOmbres.Length - 1].GetComponent<Spawner>()._numberToSpawn = _nombreASpawnOmbres;
-        StartCoroutine(_spawnerOmbres[_spawnerOmbres.Length - 1].GetComponent<Spawner>().SpawnMob());
     }
 }

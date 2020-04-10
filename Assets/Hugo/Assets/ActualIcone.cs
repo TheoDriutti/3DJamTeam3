@@ -13,13 +13,20 @@ public class ActualIcone : MonoBehaviour
     void Start()
     {
         ChangingIcone();
-        this.transform.position = new Vector3(this.transform.position.x + (_ecart * (_id-1)), this.transform.position.y, this.transform.position.z);
+        this.transform.position = new Vector3(this.transform.position.x + (_ecart * (_id - 1)), this.transform.position.y, this.transform.position.z);
     }
     public void ChangingIcone()
     {
-        if(FindObjectOfType<FlashLight>()._differentsMods == _enumName)
+        if (FindObjectOfType<FlashLight>()._pointLight.enabled)
         {
-            this.GetComponent<Image>().color = new Color(255, 255, 255, 0.9f);
+            if (FindObjectOfType<FlashLight>()._differentsMods == _enumName)
+            {
+                this.GetComponent<Image>().color = new Color(255, 255, 255, 0.9f);
+            }
+            else
+            {
+                this.GetComponent<Image>().color = new Color(255, 255, 255, 0.2f);
+            }
         }
         else
         {
