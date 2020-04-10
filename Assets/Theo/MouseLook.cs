@@ -21,6 +21,8 @@ public class MouseLook : MonoBehaviour
     {
         if (!ClockTimer._isCardVisible)
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = (Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime) + FindObjectOfType<IdleCamera>()._numberIncrease;
             xRotation -= mouseY;
@@ -28,10 +30,12 @@ public class MouseLook : MonoBehaviour
 
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             playerBody.Rotate(Vector3.up * mouseX);
+            Cursor.visible = false;
         }
         else
         {
-
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

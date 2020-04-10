@@ -14,7 +14,7 @@ public class CardManager : MonoBehaviour
     [HideInInspector] public bool _goDown;
     int _speed;
 
-    [HideInInspector] public GameObject _otherCard01, _otherCard02;
+     public GameObject _otherCard01, _otherCard02;
 
     string _numberCard;
 

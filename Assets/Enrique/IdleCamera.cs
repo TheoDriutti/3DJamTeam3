@@ -17,8 +17,6 @@ public class IdleCamera : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_numberIncrease);
-        Debug.Log(_isIncreasing);
         if (_isIncreasing)
             _numberIncrease += _speed / 100;
         else
