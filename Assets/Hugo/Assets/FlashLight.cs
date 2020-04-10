@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FlashLight : MonoBehaviour
 {
@@ -35,14 +36,23 @@ public class FlashLight : MonoBehaviour
     [HideInInspector] public bool _effectIsProjecteurCollected;
     [HideInInspector] public float _effectMultiplicateurRechargeBatterie = 1;
 
+    string sceneName;
 
 
     void Start()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
         _lifeStart *= _effectCapacityMax;
         _life = _lifeStart;
         ChangingMode();
         StartCoroutine(LifeDown());
+        if(sceneName=="MainMenu")
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+
+        }
     }
 
     void Update()
@@ -56,7 +66,7 @@ public class FlashLight : MonoBehaviour
             _sphereCaster.enabled = true;
         }
 
-        if (!ClockTimer._isCardVisible)
+        if (!ClockTimer._isCardVisible && sceneName != "MainMenu")
         {
             if (_life > Mathf.RoundToInt(100 * _effectCapacityMax))
                 _life = Mathf.RoundToInt(100 * _effectCapacityMax);

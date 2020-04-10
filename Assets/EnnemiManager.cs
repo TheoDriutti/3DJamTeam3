@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnnemiManager : MonoBehaviour
 {
     public enum Ennemi { PETIT, GROS, OMBRE };
     public Transform target;
     public float moveSpeed;
+    private float initialSpeed;
     public float attackRange;
     public float secondesHP;
     public EnumDifferentesLight._differentsMods lampeToKill;
@@ -17,6 +19,7 @@ public class EnnemiManager : MonoBehaviour
     void Start()
     {
         targetPos = new Vector3(target.position.x, transform.position.y, target.position.z);
+        initialSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -34,7 +37,8 @@ public class EnnemiManager : MonoBehaviour
 
         if (Vector3.Distance(targetPos, transform.position) < attackRange)
         {
-            // player prend des dégâts
+            Cursor.visible = true;
+            SceneManager.LoadScene(0);
         }
         else
         {
@@ -42,6 +46,32 @@ public class EnnemiManager : MonoBehaviour
             float step = moveSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
         }
+
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Trap") && other.gameObject.GetComponent<Trap>().TrapIsActive == true)
+        {
+            StartCoroutine(Traped(other.gameObject));
+
+        }
+    }
+
+    IEnumerator Traped(GameObject trap)
+    {
+        if (trap.GetComponent<Trap>().Type == "Slow")
+        {
+            moveSpeed = moveSpeed * 0.5f;
+        }
+
+        if (trap.GetComponent<Trap>().Type == "Stop")
+        {
+            moveSpeed = moveSpeed * 0;
+        }
+        yield return new WaitForSeconds(trap.GetComponent<Trap>().TempsDeViePiege);
+        moveSpeed = initialSpeed;
+
 
     }
 }

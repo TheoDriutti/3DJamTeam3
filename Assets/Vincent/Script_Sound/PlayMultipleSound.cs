@@ -66,7 +66,7 @@ public class PlayMultipleSound : MonoBehaviour
     {
         for (int i = 0; i < soundsToPlay.Length; i++)
         {
-            if (soundsToPlay[i].playOnAwake)
+            if (soundsToPlay[i].playOnAwake && !audioSource.isPlaying)
             {
                 audioSource.Stop();
                 audioSource.clip = soundsToPlay[i].audio;
