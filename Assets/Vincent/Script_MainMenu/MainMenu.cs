@@ -3,22 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-
-
-
-
+[RequireComponent(typeof(PlayOneSound))]
 public class MainMenu : MonoBehaviour
 {
-    private PlayMultipleSound sound;
-    [SerializeField]
-    public TYPE_AUDIO typeAudio;
-
-    void Start()
-    {
-        sound = GetComponent<PlayMultipleSound>();
-    }
-
     public string nameSceneToPlay = "GameScene";
 
     [SerializeField]
@@ -28,32 +15,39 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject panelLoading;
 
+    private PlayOneSound sound;
+
+    void Start()
+    {
+        sound = GetComponent<PlayOneSound>();
+    }
+
     public void PlayButton()
     {
         panelMenu.SetActive(false);
         panelLoading.SetActive(true);
+        sound.PlaySound();
         SceneManager.LoadScene(nameSceneToPlay);
-        sound.PlaySound(typeAudio);
     }
 
     public void ControlButton()
     {
         panelMenu.SetActive(false);
         panelControl.SetActive(true);
-        sound.PlaySound(typeAudio);
+        sound.PlaySound();
     }
 
     public void ExitButton()
     {
+        sound.PlaySound();
         Application.Quit();
-        sound.PlaySound(typeAudio);
     }
 
     public void ControlToMenu()
     {
         panelMenu.SetActive(true);
         panelControl.SetActive(false);
-        sound.PlaySound(typeAudio);
+        sound.PlaySound();
     }
 
 }

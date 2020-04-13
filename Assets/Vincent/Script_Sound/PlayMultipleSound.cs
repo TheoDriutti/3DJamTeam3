@@ -7,9 +7,6 @@ public class PlayMultipleSound : MonoBehaviour
     [HideInInspector]
     public bool declencherAudio = false;
 
-    public bool declencherAudioTEST1 = false;
-    public bool declencherAudioTEST2 = false;
-
     [SerializeField]
     private TYPE_AUDIO[] typeAudio;
 
