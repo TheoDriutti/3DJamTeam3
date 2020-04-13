@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
   m_Name: BatterieMax
   m_EditorClassIdentifier: 
-  _effectTitle: "Batterie Longue dur\xE9e"
-  _effectDescription: "Augmente la capacit\xE9 maximum de la batterie de 20%"
+  _effectTitle: Long Life Battery
+  _effectDescription: Increase maximum battery capacity by 20%.
   _EnumEffect: 2
   _isInfinite: 0
   _numberOfReusing: 3

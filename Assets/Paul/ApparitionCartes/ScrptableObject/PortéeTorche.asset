@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
   m_Name: "Port\xE9eTorche"
   m_EditorClassIdentifier: 
-  _effectTitle: "Longue port\xE9e"
-  _effectDescription: "Augmente la distance d'\xE9clairage de la lampe de 15%"
+  _effectTitle: Long Range
+  _effectDescription: Increases lamp lighting distance by 15%.
   _EnumEffect: 1
   _isInfinite: 0
   _numberOfReusing: 4

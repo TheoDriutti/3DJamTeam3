@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
   m_Name: "ReloadPi\xE8ge"
   m_EditorClassIdentifier: 
-  _effectTitle: "Pi\xE8ge autonome"
-  _effectDescription: "R\xE9duit le temps de rechargement des pi\xE8ges de 25%"
+  _effectTitle: Autonomous trap
+  _effectDescription: Reduces reload time of traps by 25%. (WIP)
   _EnumEffect: 3
   _isInfinite: 0
   _numberOfReusing: 4

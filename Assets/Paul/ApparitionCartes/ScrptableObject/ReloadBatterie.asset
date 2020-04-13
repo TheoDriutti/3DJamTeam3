@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
   m_Name: ReloadBatterie
   m_EditorClassIdentifier: 
-  _effectTitle: Optimisation de la Batterie
-  _effectDescription: Augmente la vitesse de regain de la batterie de 15%
+  _effectTitle: Battery Optimization
+  _effectDescription: Increases battery recovery speed by 15%.
   _EnumEffect: 9
   _isInfinite: 1
   _numberOfReusing: 2

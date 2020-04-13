@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
   m_Name: DureeVieTorche
   m_EditorClassIdentifier: 
-  _effectTitle: Batterie au Lithium
-  _effectDescription: "R\xE9duit la consommation de la batterie de 20%"
+  _effectTitle: Lithium Battery
+  _effectDescription: Reduces battery consumption by 20%.
   _EnumEffect: 0
   _isInfinite: 1
   _numberOfReusing: 2

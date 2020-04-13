@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
   m_Name: LampeDisco
   m_EditorClassIdentifier: 
-  _effectTitle: Lampe Disco
-  _effectDescription: Change la couleur de la lampe.
+  _effectTitle: Disco Lamp
+  _effectDescription: Change the color of the lamp.
   _EnumEffect: 10
   _isInfinite: 1
   _numberOfReusing: 2

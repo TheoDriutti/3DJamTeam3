@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
   m_Name: "Zone pi\xE8ge"
   m_EditorClassIdentifier: 
-  _effectTitle: "Pi\xE8ges \xE9largis"
-  _effectDescription: "Augmente la zone d'effet des pi\xE8ges de 15%"
+  _effectTitle: Expanded traps
+  _effectDescription: Increases the area of effect of traps by 15%. (WIP)
   _EnumEffect: 8
   _isInfinite: 0
   _numberOfReusing: 4

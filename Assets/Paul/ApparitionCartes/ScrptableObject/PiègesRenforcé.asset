@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceebf7b6232ec84bbbc1da1e18a1c92, type: 3}
   m_Name: "Pi\xE8gesRenforc\xE9"
   m_EditorClassIdentifier: 
-  _effectTitle: "Pi\xE8ges renforc\xE9"
-  _effectDescription: "Augmente la dur\xE9e d'activation des pi\xE8ges de 20%"
+  _effectTitle: Reinforced traps
+  _effectDescription: Increases the activated time of traps by 20%. (WIP)
   _EnumEffect: 7
   _isInfinite: 0
   _numberOfReusing: 4
