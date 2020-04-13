@@ -77,7 +77,7 @@ public class FlashLight : MonoBehaviour
             {
                 SwitchOnOff();
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetMouseButtonDown(1))
             {
                 ChangingMode();
             }
